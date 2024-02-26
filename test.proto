@@ -4,10 +4,6 @@ package stream;
 option go_package = "./proto";
 
 
-service User {
-  rpc Login(LoginRequest) returns (LoginResponse);
-}
-
 message LoginRequest {
   string Name = 10;
 }
@@ -16,3 +12,6 @@ message LoginResponse {
   string Message = 10;
 }
 
+service User {
+  rpc Login(LoginRequest) returns (LoginResponse);
+}
