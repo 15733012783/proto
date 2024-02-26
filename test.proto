@@ -4,14 +4,15 @@ package stream;
 option go_package = "./proto";
 
 
-message StreamReq {
-  string name = 1;
+service User {
+  rpc Login(LoginRequest) returns (LoginResponse);
 }
 
-message StreamResp {
-  string greet = 1;
+message LoginRequest {
+  string Name = 10;
 }
 
-service StreamGreeter {
-  rpc greet(StreamReq) returns (StreamResp);
+message LoginResponse {
+  string Message = 10;
 }
+
