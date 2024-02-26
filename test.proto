@@ -4,14 +4,52 @@ package stream;
 option go_package = "./proto";
 
 
-message LoginRequest {
-  string Name = 10;
-}
-
-message LoginResponse {
-  string Message = 10;
-}
-
 service User {
-  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc CreateGoods(GetGoodsResponse) returns (CreateGoodsRequest);
+  rpc UpdateGoods(UpdateGoodsRequest) returns (UpdateGoodsResponse);
+  rpc DeleteGoods(DeleteGoodsRequest) returns (DeleteGoodsResponse);
+  rpc WhereGoods(WhereGoodsRequest) returns (WhereGoodsResponse);
+}
+
+message GoodsInfo {
+  int64  ID         = 10;
+  string GoodsName  = 20;
+  float  GoodsPrice = 30;
+  int64  GoodsNum   = 40;
+}
+
+message GetGoodsResponse {
+  GoodsInfo Info = 10;
+}
+
+message CreateGoodsRequest {
+  GoodsInfo Info = 10;
+}
+
+message CreateGoodsResponse {
+  GoodsInfo Info = 10;
+}
+
+message UpdateGoodsRequest {
+  GoodsInfo Info = 10;
+}
+
+message UpdateGoodsResponse {
+  GoodsInfo Info = 10;
+}
+
+message DeleteGoodsRequest {
+  int64 ID = 10;
+}
+
+message DeleteGoodsResponse {
+
+}
+
+message WhereGoodsRequest {
+  string Username = 10;
+}
+
+message WhereGoodsResponse {
+  GoodsInfo Info = 10;
 }

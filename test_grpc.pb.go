@@ -19,14 +19,20 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	User_Login_FullMethodName = "/stream.User/Login"
+	User_CreateGoods_FullMethodName = "/stream.User/CreateGoods"
+	User_UpdateGoods_FullMethodName = "/stream.User/UpdateGoods"
+	User_DeleteGoods_FullMethodName = "/stream.User/DeleteGoods"
+	User_WhereGoods_FullMethodName  = "/stream.User/WhereGoods"
 )
 
 // UserClient is the client API for User service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UserClient interface {
-	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
+	CreateGoods(ctx context.Context, in *GetGoodsResponse, opts ...grpc.CallOption) (*CreateGoodsRequest, error)
+	UpdateGoods(ctx context.Context, in *UpdateGoodsRequest, opts ...grpc.CallOption) (*UpdateGoodsResponse, error)
+	DeleteGoods(ctx context.Context, in *DeleteGoodsRequest, opts ...grpc.CallOption) (*DeleteGoodsResponse, error)
+	WhereGoods(ctx context.Context, in *WhereGoodsRequest, opts ...grpc.CallOption) (*WhereGoodsResponse, error)
 }
 
 type userClient struct {
@@ -37,9 +43,36 @@ func NewUserClient(cc grpc.ClientConnInterface) UserClient {
 	return &userClient{cc}
 }
 
-func (c *userClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
-	out := new(LoginResponse)
-	err := c.cc.Invoke(ctx, User_Login_FullMethodName, in, out, opts...)
+func (c *userClient) CreateGoods(ctx context.Context, in *GetGoodsResponse, opts ...grpc.CallOption) (*CreateGoodsRequest, error) {
+	out := new(CreateGoodsRequest)
+	err := c.cc.Invoke(ctx, User_CreateGoods_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) UpdateGoods(ctx context.Context, in *UpdateGoodsRequest, opts ...grpc.CallOption) (*UpdateGoodsResponse, error) {
+	out := new(UpdateGoodsResponse)
+	err := c.cc.Invoke(ctx, User_UpdateGoods_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) DeleteGoods(ctx context.Context, in *DeleteGoodsRequest, opts ...grpc.CallOption) (*DeleteGoodsResponse, error) {
+	out := new(DeleteGoodsResponse)
+	err := c.cc.Invoke(ctx, User_DeleteGoods_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) WhereGoods(ctx context.Context, in *WhereGoodsRequest, opts ...grpc.CallOption) (*WhereGoodsResponse, error) {
+	out := new(WhereGoodsResponse)
+	err := c.cc.Invoke(ctx, User_WhereGoods_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +83,10 @@ func (c *userClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.C
 // All implementations must embed UnimplementedUserServer
 // for forward compatibility
 type UserServer interface {
-	Login(context.Context, *LoginRequest) (*LoginResponse, error)
+	CreateGoods(context.Context, *GetGoodsResponse) (*CreateGoodsRequest, error)
+	UpdateGoods(context.Context, *UpdateGoodsRequest) (*UpdateGoodsResponse, error)
+	DeleteGoods(context.Context, *DeleteGoodsRequest) (*DeleteGoodsResponse, error)
+	WhereGoods(context.Context, *WhereGoodsRequest) (*WhereGoodsResponse, error)
 	mustEmbedUnimplementedUserServer()
 }
 
@@ -58,8 +94,17 @@ type UserServer interface {
 type UnimplementedUserServer struct {
 }
 
-func (UnimplementedUserServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
+func (UnimplementedUserServer) CreateGoods(context.Context, *GetGoodsResponse) (*CreateGoodsRequest, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateGoods not implemented")
+}
+func (UnimplementedUserServer) UpdateGoods(context.Context, *UpdateGoodsRequest) (*UpdateGoodsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateGoods not implemented")
+}
+func (UnimplementedUserServer) DeleteGoods(context.Context, *DeleteGoodsRequest) (*DeleteGoodsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteGoods not implemented")
+}
+func (UnimplementedUserServer) WhereGoods(context.Context, *WhereGoodsRequest) (*WhereGoodsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method WhereGoods not implemented")
 }
 func (UnimplementedUserServer) mustEmbedUnimplementedUserServer() {}
 
@@ -74,20 +119,74 @@ func RegisterUserServer(s grpc.ServiceRegistrar, srv UserServer) {
 	s.RegisterService(&User_ServiceDesc, srv)
 }
 
-func _User_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(LoginRequest)
+func _User_CreateGoods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetGoodsResponse)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServer).Login(ctx, in)
+		return srv.(UserServer).CreateGoods(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: User_Login_FullMethodName,
+		FullMethod: User_CreateGoods_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).Login(ctx, req.(*LoginRequest))
+		return srv.(UserServer).CreateGoods(ctx, req.(*GetGoodsResponse))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_UpdateGoods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateGoodsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).UpdateGoods(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: User_UpdateGoods_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).UpdateGoods(ctx, req.(*UpdateGoodsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_DeleteGoods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteGoodsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).DeleteGoods(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: User_DeleteGoods_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).DeleteGoods(ctx, req.(*DeleteGoodsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_WhereGoods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(WhereGoodsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).WhereGoods(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: User_WhereGoods_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).WhereGoods(ctx, req.(*WhereGoodsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -100,8 +199,20 @@ var User_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*UserServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Login",
-			Handler:    _User_Login_Handler,
+			MethodName: "CreateGoods",
+			Handler:    _User_CreateGoods_Handler,
+		},
+		{
+			MethodName: "UpdateGoods",
+			Handler:    _User_UpdateGoods_Handler,
+		},
+		{
+			MethodName: "DeleteGoods",
+			Handler:    _User_DeleteGoods_Handler,
+		},
+		{
+			MethodName: "WhereGoods",
+			Handler:    _User_WhereGoods_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
