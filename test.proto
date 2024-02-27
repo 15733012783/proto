@@ -47,7 +47,7 @@ message DeleteGoodsResponse {
 }
 
 message WhereGoodsRequest {
-  string Username = 10;
+  string GoodsName = 10;
 }
 
 message WhereGoodsResponse {
