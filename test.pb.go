@@ -185,7 +185,7 @@ func (x *CreateGoodsResponse) GetInfo() *GoodsInfo {
 	return nil
 }
 
-type UpdateGoodsRequest struct {
+type UploadGoodsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -193,8 +193,8 @@ type UpdateGoodsRequest struct {
 	Info *GoodsInfo `protobuf:"bytes,10,opt,name=Info,proto3" json:"Info,omitempty"`
 }
 
-func (x *UpdateGoodsRequest) Reset() {
-	*x = UpdateGoodsRequest{}
+func (x *UploadGoodsRequest) Reset() {
+	*x = UploadGoodsRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_test_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -202,13 +202,13 @@ func (x *UpdateGoodsRequest) Reset() {
 	}
 }
 
-func (x *UpdateGoodsRequest) String() string {
+func (x *UploadGoodsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateGoodsRequest) ProtoMessage() {}
+func (*UploadGoodsRequest) ProtoMessage() {}
 
-func (x *UpdateGoodsRequest) ProtoReflect() protoreflect.Message {
+func (x *UploadGoodsRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_test_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -220,19 +220,19 @@ func (x *UpdateGoodsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateGoodsRequest.ProtoReflect.Descriptor instead.
-func (*UpdateGoodsRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UploadGoodsRequest.ProtoReflect.Descriptor instead.
+func (*UploadGoodsRequest) Descriptor() ([]byte, []int) {
 	return file_test_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *UpdateGoodsRequest) GetInfo() *GoodsInfo {
+func (x *UploadGoodsRequest) GetInfo() *GoodsInfo {
 	if x != nil {
 		return x.Info
 	}
 	return nil
 }
 
-type UpdateGoodsResponse struct {
+type UploadGoodsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -240,8 +240,8 @@ type UpdateGoodsResponse struct {
 	Info *GoodsInfo `protobuf:"bytes,10,opt,name=Info,proto3" json:"Info,omitempty"`
 }
 
-func (x *UpdateGoodsResponse) Reset() {
-	*x = UpdateGoodsResponse{}
+func (x *UploadGoodsResponse) Reset() {
+	*x = UploadGoodsResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_test_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -249,13 +249,13 @@ func (x *UpdateGoodsResponse) Reset() {
 	}
 }
 
-func (x *UpdateGoodsResponse) String() string {
+func (x *UploadGoodsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateGoodsResponse) ProtoMessage() {}
+func (*UploadGoodsResponse) ProtoMessage() {}
 
-func (x *UpdateGoodsResponse) ProtoReflect() protoreflect.Message {
+func (x *UploadGoodsResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_test_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -267,12 +267,12 @@ func (x *UpdateGoodsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateGoodsResponse.ProtoReflect.Descriptor instead.
-func (*UpdateGoodsResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UploadGoodsResponse.ProtoReflect.Descriptor instead.
+func (*UploadGoodsResponse) Descriptor() ([]byte, []int) {
 	return file_test_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UpdateGoodsResponse) GetInfo() *GoodsInfo {
+func (x *UploadGoodsResponse) GetInfo() *GoodsInfo {
 	if x != nil {
 		return x.Info
 	}
@@ -477,11 +477,11 @@ var file_test_proto_rawDesc = []byte{
 	0x74, 0x65, 0x47, 0x6f, 0x6f, 0x64, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
 	0x25, 0x0a, 0x04, 0x49, 0x6e, 0x66, 0x6f, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e,
 	0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2e, 0x47, 0x6f, 0x6f, 0x64, 0x73, 0x49, 0x6e, 0x66, 0x6f,
-	0x52, 0x04, 0x49, 0x6e, 0x66, 0x6f, 0x22, 0x3b, 0x0a, 0x12, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
+	0x52, 0x04, 0x49, 0x6e, 0x66, 0x6f, 0x22, 0x3b, 0x0a, 0x12, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64,
 	0x47, 0x6f, 0x6f, 0x64, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x25, 0x0a, 0x04,
 	0x49, 0x6e, 0x66, 0x6f, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x73, 0x74, 0x72,
 	0x65, 0x61, 0x6d, 0x2e, 0x47, 0x6f, 0x6f, 0x64, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x49,
-	0x6e, 0x66, 0x6f, 0x22, 0x3c, 0x0a, 0x13, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x47, 0x6f, 0x6f,
+	0x6e, 0x66, 0x6f, 0x22, 0x3c, 0x0a, 0x13, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x47, 0x6f, 0x6f,
 	0x64, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x25, 0x0a, 0x04, 0x49, 0x6e,
 	0x66, 0x6f, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x73, 0x74, 0x72, 0x65, 0x61,
 	0x6d, 0x2e, 0x47, 0x6f, 0x6f, 0x64, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x49, 0x6e, 0x66,
@@ -501,10 +501,10 @@ var file_test_proto_rawDesc = []byte{
 	0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x47, 0x6f, 0x6f, 0x64, 0x73, 0x52, 0x65, 0x71, 0x75,
 	0x65, 0x73, 0x74, 0x1a, 0x1b, 0x2e, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2e, 0x43, 0x72, 0x65,
 	0x61, 0x74, 0x65, 0x47, 0x6f, 0x6f, 0x64, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x12, 0x46, 0x0a, 0x0b, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x47, 0x6f, 0x6f, 0x64, 0x73, 0x12,
-	0x1a, 0x2e, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x47,
+	0x12, 0x46, 0x0a, 0x0b, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x47, 0x6f, 0x6f, 0x64, 0x73, 0x12,
+	0x1a, 0x2e, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2e, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x47,
 	0x6f, 0x6f, 0x64, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1b, 0x2e, 0x73, 0x74,
-	0x72, 0x65, 0x61, 0x6d, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x47, 0x6f, 0x6f, 0x64, 0x73,
+	0x72, 0x65, 0x61, 0x6d, 0x2e, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x47, 0x6f, 0x6f, 0x64, 0x73,
 	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x46, 0x0a, 0x0b, 0x44, 0x65, 0x6c, 0x65,
 	0x74, 0x65, 0x47, 0x6f, 0x6f, 0x64, 0x73, 0x12, 0x1a, 0x2e, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d,
 	0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x47, 0x6f, 0x6f, 0x64, 0x73, 0x52, 0x65, 0x71, 0x75,
@@ -535,8 +535,8 @@ var file_test_proto_goTypes = []interface{}{
 	(*GoodsInfo)(nil),           // 0: stream.GoodsInfo
 	(*CreateGoodsRequest)(nil),  // 1: stream.CreateGoodsRequest
 	(*CreateGoodsResponse)(nil), // 2: stream.CreateGoodsResponse
-	(*UpdateGoodsRequest)(nil),  // 3: stream.UpdateGoodsRequest
-	(*UpdateGoodsResponse)(nil), // 4: stream.UpdateGoodsResponse
+	(*UploadGoodsRequest)(nil),  // 3: stream.UploadGoodsRequest
+	(*UploadGoodsResponse)(nil), // 4: stream.UploadGoodsResponse
 	(*DeleteGoodsRequest)(nil),  // 5: stream.DeleteGoodsRequest
 	(*DeleteGoodsResponse)(nil), // 6: stream.DeleteGoodsResponse
 	(*WhereGoodsRequest)(nil),   // 7: stream.WhereGoodsRequest
@@ -545,15 +545,15 @@ var file_test_proto_goTypes = []interface{}{
 var file_test_proto_depIdxs = []int32{
 	0, // 0: stream.CreateGoodsRequest.Info:type_name -> stream.GoodsInfo
 	0, // 1: stream.CreateGoodsResponse.Info:type_name -> stream.GoodsInfo
-	0, // 2: stream.UpdateGoodsRequest.Info:type_name -> stream.GoodsInfo
-	0, // 3: stream.UpdateGoodsResponse.Info:type_name -> stream.GoodsInfo
+	0, // 2: stream.UploadGoodsRequest.Info:type_name -> stream.GoodsInfo
+	0, // 3: stream.UploadGoodsResponse.Info:type_name -> stream.GoodsInfo
 	0, // 4: stream.WhereGoodsResponse.Info:type_name -> stream.GoodsInfo
 	1, // 5: stream.Goods.CreateGoods:input_type -> stream.CreateGoodsRequest
-	3, // 6: stream.Goods.UpdateGoods:input_type -> stream.UpdateGoodsRequest
+	3, // 6: stream.Goods.UploadGoods:input_type -> stream.UploadGoodsRequest
 	5, // 7: stream.Goods.DeleteGoods:input_type -> stream.DeleteGoodsRequest
 	7, // 8: stream.Goods.WhereGoods:input_type -> stream.WhereGoodsRequest
 	2, // 9: stream.Goods.CreateGoods:output_type -> stream.CreateGoodsResponse
-	4, // 10: stream.Goods.UpdateGoods:output_type -> stream.UpdateGoodsResponse
+	4, // 10: stream.Goods.UploadGoods:output_type -> stream.UploadGoodsResponse
 	6, // 11: stream.Goods.DeleteGoods:output_type -> stream.DeleteGoodsResponse
 	8, // 12: stream.Goods.WhereGoods:output_type -> stream.WhereGoodsResponse
 	9, // [9:13] is the sub-list for method output_type
@@ -606,7 +606,7 @@ func file_test_proto_init() {
 			}
 		}
 		file_test_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateGoodsRequest); i {
+			switch v := v.(*UploadGoodsRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -618,7 +618,7 @@ func file_test_proto_init() {
 			}
 		}
 		file_test_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateGoodsResponse); i {
+			switch v := v.(*UploadGoodsResponse); i {
 			case 0:
 				return &v.state
 			case 1:

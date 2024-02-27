@@ -20,7 +20,7 @@ const _ = grpc.SupportPackageIsVersion7
 
 const (
 	Goods_CreateGoods_FullMethodName = "/stream.Goods/CreateGoods"
-	Goods_UpdateGoods_FullMethodName = "/stream.Goods/UpdateGoods"
+	Goods_UploadGoods_FullMethodName = "/stream.Goods/UploadGoods"
 	Goods_DeleteGoods_FullMethodName = "/stream.Goods/DeleteGoods"
 	Goods_WhereGoods_FullMethodName  = "/stream.Goods/WhereGoods"
 )
@@ -30,7 +30,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GoodsClient interface {
 	CreateGoods(ctx context.Context, in *CreateGoodsRequest, opts ...grpc.CallOption) (*CreateGoodsResponse, error)
-	UpdateGoods(ctx context.Context, in *UpdateGoodsRequest, opts ...grpc.CallOption) (*UpdateGoodsResponse, error)
+	UploadGoods(ctx context.Context, in *UploadGoodsRequest, opts ...grpc.CallOption) (*UploadGoodsResponse, error)
 	DeleteGoods(ctx context.Context, in *DeleteGoodsRequest, opts ...grpc.CallOption) (*DeleteGoodsResponse, error)
 	WhereGoods(ctx context.Context, in *WhereGoodsRequest, opts ...grpc.CallOption) (*WhereGoodsResponse, error)
 }
@@ -52,9 +52,9 @@ func (c *goodsClient) CreateGoods(ctx context.Context, in *CreateGoodsRequest, o
 	return out, nil
 }
 
-func (c *goodsClient) UpdateGoods(ctx context.Context, in *UpdateGoodsRequest, opts ...grpc.CallOption) (*UpdateGoodsResponse, error) {
-	out := new(UpdateGoodsResponse)
-	err := c.cc.Invoke(ctx, Goods_UpdateGoods_FullMethodName, in, out, opts...)
+func (c *goodsClient) UploadGoods(ctx context.Context, in *UploadGoodsRequest, opts ...grpc.CallOption) (*UploadGoodsResponse, error) {
+	out := new(UploadGoodsResponse)
+	err := c.cc.Invoke(ctx, Goods_UploadGoods_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -84,7 +84,7 @@ func (c *goodsClient) WhereGoods(ctx context.Context, in *WhereGoodsRequest, opt
 // for forward compatibility
 type GoodsServer interface {
 	CreateGoods(context.Context, *CreateGoodsRequest) (*CreateGoodsResponse, error)
-	UpdateGoods(context.Context, *UpdateGoodsRequest) (*UpdateGoodsResponse, error)
+	UploadGoods(context.Context, *UploadGoodsRequest) (*UploadGoodsResponse, error)
 	DeleteGoods(context.Context, *DeleteGoodsRequest) (*DeleteGoodsResponse, error)
 	WhereGoods(context.Context, *WhereGoodsRequest) (*WhereGoodsResponse, error)
 	mustEmbedUnimplementedGoodsServer()
@@ -97,8 +97,8 @@ type UnimplementedGoodsServer struct {
 func (UnimplementedGoodsServer) CreateGoods(context.Context, *CreateGoodsRequest) (*CreateGoodsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateGoods not implemented")
 }
-func (UnimplementedGoodsServer) UpdateGoods(context.Context, *UpdateGoodsRequest) (*UpdateGoodsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateGoods not implemented")
+func (UnimplementedGoodsServer) UploadGoods(context.Context, *UploadGoodsRequest) (*UploadGoodsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UploadGoods not implemented")
 }
 func (UnimplementedGoodsServer) DeleteGoods(context.Context, *DeleteGoodsRequest) (*DeleteGoodsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteGoods not implemented")
@@ -137,20 +137,20 @@ func _Goods_CreateGoods_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Goods_UpdateGoods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateGoodsRequest)
+func _Goods_UploadGoods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UploadGoodsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(GoodsServer).UpdateGoods(ctx, in)
+		return srv.(GoodsServer).UploadGoods(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Goods_UpdateGoods_FullMethodName,
+		FullMethod: Goods_UploadGoods_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GoodsServer).UpdateGoods(ctx, req.(*UpdateGoodsRequest))
+		return srv.(GoodsServer).UploadGoods(ctx, req.(*UploadGoodsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -203,8 +203,8 @@ var Goods_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Goods_CreateGoods_Handler,
 		},
 		{
-			MethodName: "UpdateGoods",
-			Handler:    _Goods_UpdateGoods_Handler,
+			MethodName: "UploadGoods",
+			Handler:    _Goods_UploadGoods_Handler,
 		},
 		{
 			MethodName: "DeleteGoods",

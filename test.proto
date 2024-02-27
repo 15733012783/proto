@@ -6,7 +6,7 @@ option go_package = "./proto";
 
 service Goods {
   rpc CreateGoods(CreateGoodsRequest) returns (CreateGoodsResponse);
-  rpc UpdateGoods(UpdateGoodsRequest) returns (UpdateGoodsResponse);
+  rpc UploadGoods(UploadGoodsRequest) returns (UploadGoodsResponse);
   rpc DeleteGoods(DeleteGoodsRequest) returns (DeleteGoodsResponse);
   rpc WhereGoods(WhereGoodsRequest) returns (WhereGoodsResponse);
 }
@@ -27,11 +27,11 @@ message CreateGoodsResponse {
   GoodsInfo Info = 10;
 }
 
-message UpdateGoodsRequest {
+message UploadGoodsRequest {
   GoodsInfo Info = 10;
 }
 
-message UpdateGoodsResponse {
+message UploadGoodsResponse {
   GoodsInfo Info = 10;
 }
 
