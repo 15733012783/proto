@@ -4,7 +4,7 @@ package stream;
 option go_package = "./proto";
 
 
-service User {
+service Goods {
   rpc CreateGoods(CreateGoodsRequest) returns (CreateGoodsResponse);
   rpc UpdateGoods(UpdateGoodsRequest) returns (UpdateGoodsResponse);
   rpc DeleteGoods(DeleteGoodsRequest) returns (DeleteGoodsResponse);
