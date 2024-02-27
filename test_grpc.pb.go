@@ -19,200 +19,200 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	User_CreateGoods_FullMethodName = "/stream.User/CreateGoods"
-	User_UpdateGoods_FullMethodName = "/stream.User/UpdateGoods"
-	User_DeleteGoods_FullMethodName = "/stream.User/DeleteGoods"
-	User_WhereGoods_FullMethodName  = "/stream.User/WhereGoods"
+	Goods_CreateGoods_FullMethodName = "/stream.Goods/CreateGoods"
+	Goods_UpdateGoods_FullMethodName = "/stream.Goods/UpdateGoods"
+	Goods_DeleteGoods_FullMethodName = "/stream.Goods/DeleteGoods"
+	Goods_WhereGoods_FullMethodName  = "/stream.Goods/WhereGoods"
 )
 
-// UserClient is the client API for User service.
+// GoodsClient is the client API for Goods service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type UserClient interface {
-	CreateGoods(ctx context.Context, in *GetGoodsResponse, opts ...grpc.CallOption) (*CreateGoodsRequest, error)
+type GoodsClient interface {
+	CreateGoods(ctx context.Context, in *CreateGoodsRequest, opts ...grpc.CallOption) (*CreateGoodsResponse, error)
 	UpdateGoods(ctx context.Context, in *UpdateGoodsRequest, opts ...grpc.CallOption) (*UpdateGoodsResponse, error)
 	DeleteGoods(ctx context.Context, in *DeleteGoodsRequest, opts ...grpc.CallOption) (*DeleteGoodsResponse, error)
 	WhereGoods(ctx context.Context, in *WhereGoodsRequest, opts ...grpc.CallOption) (*WhereGoodsResponse, error)
 }
 
-type userClient struct {
+type goodsClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewUserClient(cc grpc.ClientConnInterface) UserClient {
-	return &userClient{cc}
+func NewGoodsClient(cc grpc.ClientConnInterface) GoodsClient {
+	return &goodsClient{cc}
 }
 
-func (c *userClient) CreateGoods(ctx context.Context, in *GetGoodsResponse, opts ...grpc.CallOption) (*CreateGoodsRequest, error) {
-	out := new(CreateGoodsRequest)
-	err := c.cc.Invoke(ctx, User_CreateGoods_FullMethodName, in, out, opts...)
+func (c *goodsClient) CreateGoods(ctx context.Context, in *CreateGoodsRequest, opts ...grpc.CallOption) (*CreateGoodsResponse, error) {
+	out := new(CreateGoodsResponse)
+	err := c.cc.Invoke(ctx, Goods_CreateGoods_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userClient) UpdateGoods(ctx context.Context, in *UpdateGoodsRequest, opts ...grpc.CallOption) (*UpdateGoodsResponse, error) {
+func (c *goodsClient) UpdateGoods(ctx context.Context, in *UpdateGoodsRequest, opts ...grpc.CallOption) (*UpdateGoodsResponse, error) {
 	out := new(UpdateGoodsResponse)
-	err := c.cc.Invoke(ctx, User_UpdateGoods_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, Goods_UpdateGoods_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userClient) DeleteGoods(ctx context.Context, in *DeleteGoodsRequest, opts ...grpc.CallOption) (*DeleteGoodsResponse, error) {
+func (c *goodsClient) DeleteGoods(ctx context.Context, in *DeleteGoodsRequest, opts ...grpc.CallOption) (*DeleteGoodsResponse, error) {
 	out := new(DeleteGoodsResponse)
-	err := c.cc.Invoke(ctx, User_DeleteGoods_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, Goods_DeleteGoods_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userClient) WhereGoods(ctx context.Context, in *WhereGoodsRequest, opts ...grpc.CallOption) (*WhereGoodsResponse, error) {
+func (c *goodsClient) WhereGoods(ctx context.Context, in *WhereGoodsRequest, opts ...grpc.CallOption) (*WhereGoodsResponse, error) {
 	out := new(WhereGoodsResponse)
-	err := c.cc.Invoke(ctx, User_WhereGoods_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, Goods_WhereGoods_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// UserServer is the server API for User service.
-// All implementations must embed UnimplementedUserServer
+// GoodsServer is the server API for Goods service.
+// All implementations must embed UnimplementedGoodsServer
 // for forward compatibility
-type UserServer interface {
-	CreateGoods(context.Context, *GetGoodsResponse) (*CreateGoodsRequest, error)
+type GoodsServer interface {
+	CreateGoods(context.Context, *CreateGoodsRequest) (*CreateGoodsResponse, error)
 	UpdateGoods(context.Context, *UpdateGoodsRequest) (*UpdateGoodsResponse, error)
 	DeleteGoods(context.Context, *DeleteGoodsRequest) (*DeleteGoodsResponse, error)
 	WhereGoods(context.Context, *WhereGoodsRequest) (*WhereGoodsResponse, error)
-	mustEmbedUnimplementedUserServer()
+	mustEmbedUnimplementedGoodsServer()
 }
 
-// UnimplementedUserServer must be embedded to have forward compatible implementations.
-type UnimplementedUserServer struct {
+// UnimplementedGoodsServer must be embedded to have forward compatible implementations.
+type UnimplementedGoodsServer struct {
 }
 
-func (UnimplementedUserServer) CreateGoods(context.Context, *GetGoodsResponse) (*CreateGoodsRequest, error) {
+func (UnimplementedGoodsServer) CreateGoods(context.Context, *CreateGoodsRequest) (*CreateGoodsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateGoods not implemented")
 }
-func (UnimplementedUserServer) UpdateGoods(context.Context, *UpdateGoodsRequest) (*UpdateGoodsResponse, error) {
+func (UnimplementedGoodsServer) UpdateGoods(context.Context, *UpdateGoodsRequest) (*UpdateGoodsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateGoods not implemented")
 }
-func (UnimplementedUserServer) DeleteGoods(context.Context, *DeleteGoodsRequest) (*DeleteGoodsResponse, error) {
+func (UnimplementedGoodsServer) DeleteGoods(context.Context, *DeleteGoodsRequest) (*DeleteGoodsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteGoods not implemented")
 }
-func (UnimplementedUserServer) WhereGoods(context.Context, *WhereGoodsRequest) (*WhereGoodsResponse, error) {
+func (UnimplementedGoodsServer) WhereGoods(context.Context, *WhereGoodsRequest) (*WhereGoodsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method WhereGoods not implemented")
 }
-func (UnimplementedUserServer) mustEmbedUnimplementedUserServer() {}
+func (UnimplementedGoodsServer) mustEmbedUnimplementedGoodsServer() {}
 
-// UnsafeUserServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to UserServer will
+// UnsafeGoodsServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to GoodsServer will
 // result in compilation errors.
-type UnsafeUserServer interface {
-	mustEmbedUnimplementedUserServer()
+type UnsafeGoodsServer interface {
+	mustEmbedUnimplementedGoodsServer()
 }
 
-func RegisterUserServer(s grpc.ServiceRegistrar, srv UserServer) {
-	s.RegisterService(&User_ServiceDesc, srv)
+func RegisterGoodsServer(s grpc.ServiceRegistrar, srv GoodsServer) {
+	s.RegisterService(&Goods_ServiceDesc, srv)
 }
 
-func _User_CreateGoods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetGoodsResponse)
+func _Goods_CreateGoods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateGoodsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServer).CreateGoods(ctx, in)
+		return srv.(GoodsServer).CreateGoods(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: User_CreateGoods_FullMethodName,
+		FullMethod: Goods_CreateGoods_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).CreateGoods(ctx, req.(*GetGoodsResponse))
+		return srv.(GoodsServer).CreateGoods(ctx, req.(*CreateGoodsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _User_UpdateGoods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Goods_UpdateGoods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateGoodsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServer).UpdateGoods(ctx, in)
+		return srv.(GoodsServer).UpdateGoods(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: User_UpdateGoods_FullMethodName,
+		FullMethod: Goods_UpdateGoods_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).UpdateGoods(ctx, req.(*UpdateGoodsRequest))
+		return srv.(GoodsServer).UpdateGoods(ctx, req.(*UpdateGoodsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _User_DeleteGoods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Goods_DeleteGoods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteGoodsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServer).DeleteGoods(ctx, in)
+		return srv.(GoodsServer).DeleteGoods(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: User_DeleteGoods_FullMethodName,
+		FullMethod: Goods_DeleteGoods_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).DeleteGoods(ctx, req.(*DeleteGoodsRequest))
+		return srv.(GoodsServer).DeleteGoods(ctx, req.(*DeleteGoodsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _User_WhereGoods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Goods_WhereGoods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(WhereGoodsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServer).WhereGoods(ctx, in)
+		return srv.(GoodsServer).WhereGoods(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: User_WhereGoods_FullMethodName,
+		FullMethod: Goods_WhereGoods_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).WhereGoods(ctx, req.(*WhereGoodsRequest))
+		return srv.(GoodsServer).WhereGoods(ctx, req.(*WhereGoodsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// User_ServiceDesc is the grpc.ServiceDesc for User service.
+// Goods_ServiceDesc is the grpc.ServiceDesc for Goods service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var User_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "stream.User",
-	HandlerType: (*UserServer)(nil),
+var Goods_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "stream.Goods",
+	HandlerType: (*GoodsServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "CreateGoods",
-			Handler:    _User_CreateGoods_Handler,
+			Handler:    _Goods_CreateGoods_Handler,
 		},
 		{
 			MethodName: "UpdateGoods",
-			Handler:    _User_UpdateGoods_Handler,
+			Handler:    _Goods_UpdateGoods_Handler,
 		},
 		{
 			MethodName: "DeleteGoods",
-			Handler:    _User_DeleteGoods_Handler,
+			Handler:    _Goods_DeleteGoods_Handler,
 		},
 		{
 			MethodName: "WhereGoods",
-			Handler:    _User_WhereGoods_Handler,
+			Handler:    _Goods_WhereGoods_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
