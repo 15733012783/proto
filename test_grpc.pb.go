@@ -23,6 +23,7 @@ const (
 	Goods_UploadGoods_FullMethodName = "/stream.Goods/UploadGoods"
 	Goods_DeleteGoods_FullMethodName = "/stream.Goods/DeleteGoods"
 	Goods_WhereGoods_FullMethodName  = "/stream.Goods/WhereGoods"
+	Goods_UploadFile_FullMethodName  = "/stream.Goods/UploadFile"
 )
 
 // GoodsClient is the client API for Goods service.
@@ -33,6 +34,7 @@ type GoodsClient interface {
 	UploadGoods(ctx context.Context, in *UploadGoodsRequest, opts ...grpc.CallOption) (*UploadGoodsResponse, error)
 	DeleteGoods(ctx context.Context, in *DeleteGoodsRequest, opts ...grpc.CallOption) (*DeleteGoodsResponse, error)
 	WhereGoods(ctx context.Context, in *WhereGoodsRequest, opts ...grpc.CallOption) (*WhereGoodsResponse, error)
+	UploadFile(ctx context.Context, in *UploadFileRequest, opts ...grpc.CallOption) (*UploadFileResponse, error)
 }
 
 type goodsClient struct {
@@ -79,6 +81,15 @@ func (c *goodsClient) WhereGoods(ctx context.Context, in *WhereGoodsRequest, opt
 	return out, nil
 }
 
+func (c *goodsClient) UploadFile(ctx context.Context, in *UploadFileRequest, opts ...grpc.CallOption) (*UploadFileResponse, error) {
+	out := new(UploadFileResponse)
+	err := c.cc.Invoke(ctx, Goods_UploadFile_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // GoodsServer is the server API for Goods service.
 // All implementations must embed UnimplementedGoodsServer
 // for forward compatibility
@@ -87,6 +98,7 @@ type GoodsServer interface {
 	UploadGoods(context.Context, *UploadGoodsRequest) (*UploadGoodsResponse, error)
 	DeleteGoods(context.Context, *DeleteGoodsRequest) (*DeleteGoodsResponse, error)
 	WhereGoods(context.Context, *WhereGoodsRequest) (*WhereGoodsResponse, error)
+	UploadFile(context.Context, *UploadFileRequest) (*UploadFileResponse, error)
 	mustEmbedUnimplementedGoodsServer()
 }
 
@@ -105,6 +117,9 @@ func (UnimplementedGoodsServer) DeleteGoods(context.Context, *DeleteGoodsRequest
 }
 func (UnimplementedGoodsServer) WhereGoods(context.Context, *WhereGoodsRequest) (*WhereGoodsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method WhereGoods not implemented")
+}
+func (UnimplementedGoodsServer) UploadFile(context.Context, *UploadFileRequest) (*UploadFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UploadFile not implemented")
 }
 func (UnimplementedGoodsServer) mustEmbedUnimplementedGoodsServer() {}
 
@@ -191,6 +206,24 @@ func _Goods_WhereGoods_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Goods_UploadFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UploadFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GoodsServer).UploadFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Goods_UploadFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GoodsServer).UploadFile(ctx, req.(*UploadFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Goods_ServiceDesc is the grpc.ServiceDesc for Goods service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -213,6 +246,10 @@ var Goods_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "WhereGoods",
 			Handler:    _Goods_WhereGoods_Handler,
+		},
+		{
+			MethodName: "UploadFile",
+			Handler:    _Goods_UploadFile_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

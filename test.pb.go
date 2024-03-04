@@ -458,6 +458,108 @@ func (x *WhereGoodsResponse) GetInfo() *GoodsInfo {
 	return nil
 }
 
+type UploadFileRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ID        int64  `protobuf:"varint,10,opt,name=ID,proto3" json:"ID,omitempty"`
+	GoodsName string `protobuf:"bytes,20,opt,name=GoodsName,proto3" json:"GoodsName,omitempty"`
+}
+
+func (x *UploadFileRequest) Reset() {
+	*x = UploadFileRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_test_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UploadFileRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UploadFileRequest) ProtoMessage() {}
+
+func (x *UploadFileRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_test_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UploadFileRequest.ProtoReflect.Descriptor instead.
+func (*UploadFileRequest) Descriptor() ([]byte, []int) {
+	return file_test_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *UploadFileRequest) GetID() int64 {
+	if x != nil {
+		return x.ID
+	}
+	return 0
+}
+
+func (x *UploadFileRequest) GetGoodsName() string {
+	if x != nil {
+		return x.GoodsName
+	}
+	return ""
+}
+
+type UploadFileResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Info *GoodsInfo `protobuf:"bytes,10,opt,name=Info,proto3" json:"Info,omitempty"`
+}
+
+func (x *UploadFileResponse) Reset() {
+	*x = UploadFileResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_test_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UploadFileResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UploadFileResponse) ProtoMessage() {}
+
+func (x *UploadFileResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_test_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UploadFileResponse.ProtoReflect.Descriptor instead.
+func (*UploadFileResponse) Descriptor() ([]byte, []int) {
+	return file_test_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *UploadFileResponse) GetInfo() *GoodsInfo {
+	if x != nil {
+		return x.Info
+	}
+	return nil
+}
+
 var File_test_proto protoreflect.FileDescriptor
 
 var file_test_proto_rawDesc = []byte{
@@ -495,7 +597,15 @@ var file_test_proto_rawDesc = []byte{
 	0x65, 0x22, 0x3b, 0x0a, 0x12, 0x57, 0x68, 0x65, 0x72, 0x65, 0x47, 0x6f, 0x6f, 0x64, 0x73, 0x52,
 	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x25, 0x0a, 0x04, 0x49, 0x6e, 0x66, 0x6f, 0x18,
 	0x0a, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2e, 0x47,
-	0x6f, 0x6f, 0x64, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x49, 0x6e, 0x66, 0x6f, 0x32, 0xa4,
+	0x6f, 0x6f, 0x64, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x49, 0x6e, 0x66, 0x6f, 0x22, 0x41,
+	0x0a, 0x11, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x46, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x02, 0x49, 0x44, 0x12, 0x1c, 0x0a, 0x09, 0x47, 0x6f, 0x6f, 0x64, 0x73, 0x4e, 0x61, 0x6d, 0x65,
+	0x18, 0x14, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x47, 0x6f, 0x6f, 0x64, 0x73, 0x4e, 0x61, 0x6d,
+	0x65, 0x22, 0x3b, 0x0a, 0x12, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x46, 0x69, 0x6c, 0x65, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x25, 0x0a, 0x04, 0x49, 0x6e, 0x66, 0x6f, 0x18,
+	0x0a, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2e, 0x47,
+	0x6f, 0x6f, 0x64, 0x73, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x49, 0x6e, 0x66, 0x6f, 0x32, 0xe9,
 	0x02, 0x0a, 0x05, 0x47, 0x6f, 0x6f, 0x64, 0x73, 0x12, 0x46, 0x0a, 0x0b, 0x43, 0x72, 0x65, 0x61,
 	0x74, 0x65, 0x47, 0x6f, 0x6f, 0x64, 0x73, 0x12, 0x1a, 0x2e, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d,
 	0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x47, 0x6f, 0x6f, 0x64, 0x73, 0x52, 0x65, 0x71, 0x75,
@@ -514,8 +624,12 @@ var file_test_proto_rawDesc = []byte{
 	0x2e, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2e, 0x57, 0x68, 0x65, 0x72, 0x65, 0x47, 0x6f, 0x6f,
 	0x64, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x73, 0x74, 0x72, 0x65,
 	0x61, 0x6d, 0x2e, 0x57, 0x68, 0x65, 0x72, 0x65, 0x47, 0x6f, 0x6f, 0x64, 0x73, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x43, 0x0a, 0x0a, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x46,
+	0x69, 0x6c, 0x65, 0x12, 0x19, 0x2e, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2e, 0x55, 0x70, 0x6c,
+	0x6f, 0x61, 0x64, 0x46, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a,
+	0x2e, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2e, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x46, 0x69,
+	0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -530,7 +644,7 @@ func file_test_proto_rawDescGZIP() []byte {
 	return file_test_proto_rawDescData
 }
 
-var file_test_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_test_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_test_proto_goTypes = []interface{}{
 	(*GoodsInfo)(nil),           // 0: stream.GoodsInfo
 	(*CreateGoodsRequest)(nil),  // 1: stream.CreateGoodsRequest
@@ -541,26 +655,31 @@ var file_test_proto_goTypes = []interface{}{
 	(*DeleteGoodsResponse)(nil), // 6: stream.DeleteGoodsResponse
 	(*WhereGoodsRequest)(nil),   // 7: stream.WhereGoodsRequest
 	(*WhereGoodsResponse)(nil),  // 8: stream.WhereGoodsResponse
+	(*UploadFileRequest)(nil),   // 9: stream.UploadFileRequest
+	(*UploadFileResponse)(nil),  // 10: stream.UploadFileResponse
 }
 var file_test_proto_depIdxs = []int32{
-	0, // 0: stream.CreateGoodsRequest.Info:type_name -> stream.GoodsInfo
-	0, // 1: stream.CreateGoodsResponse.Info:type_name -> stream.GoodsInfo
-	0, // 2: stream.UploadGoodsRequest.Info:type_name -> stream.GoodsInfo
-	0, // 3: stream.UploadGoodsResponse.Info:type_name -> stream.GoodsInfo
-	0, // 4: stream.WhereGoodsResponse.Info:type_name -> stream.GoodsInfo
-	1, // 5: stream.Goods.CreateGoods:input_type -> stream.CreateGoodsRequest
-	3, // 6: stream.Goods.UploadGoods:input_type -> stream.UploadGoodsRequest
-	5, // 7: stream.Goods.DeleteGoods:input_type -> stream.DeleteGoodsRequest
-	7, // 8: stream.Goods.WhereGoods:input_type -> stream.WhereGoodsRequest
-	2, // 9: stream.Goods.CreateGoods:output_type -> stream.CreateGoodsResponse
-	4, // 10: stream.Goods.UploadGoods:output_type -> stream.UploadGoodsResponse
-	6, // 11: stream.Goods.DeleteGoods:output_type -> stream.DeleteGoodsResponse
-	8, // 12: stream.Goods.WhereGoods:output_type -> stream.WhereGoodsResponse
-	9, // [9:13] is the sub-list for method output_type
-	5, // [5:9] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	0,  // 0: stream.CreateGoodsRequest.Info:type_name -> stream.GoodsInfo
+	0,  // 1: stream.CreateGoodsResponse.Info:type_name -> stream.GoodsInfo
+	0,  // 2: stream.UploadGoodsRequest.Info:type_name -> stream.GoodsInfo
+	0,  // 3: stream.UploadGoodsResponse.Info:type_name -> stream.GoodsInfo
+	0,  // 4: stream.WhereGoodsResponse.Info:type_name -> stream.GoodsInfo
+	0,  // 5: stream.UploadFileResponse.Info:type_name -> stream.GoodsInfo
+	1,  // 6: stream.Goods.CreateGoods:input_type -> stream.CreateGoodsRequest
+	3,  // 7: stream.Goods.UploadGoods:input_type -> stream.UploadGoodsRequest
+	5,  // 8: stream.Goods.DeleteGoods:input_type -> stream.DeleteGoodsRequest
+	7,  // 9: stream.Goods.WhereGoods:input_type -> stream.WhereGoodsRequest
+	9,  // 10: stream.Goods.UploadFile:input_type -> stream.UploadFileRequest
+	2,  // 11: stream.Goods.CreateGoods:output_type -> stream.CreateGoodsResponse
+	4,  // 12: stream.Goods.UploadGoods:output_type -> stream.UploadGoodsResponse
+	6,  // 13: stream.Goods.DeleteGoods:output_type -> stream.DeleteGoodsResponse
+	8,  // 14: stream.Goods.WhereGoods:output_type -> stream.WhereGoodsResponse
+	10, // 15: stream.Goods.UploadFile:output_type -> stream.UploadFileResponse
+	11, // [11:16] is the sub-list for method output_type
+	6,  // [6:11] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_test_proto_init() }
@@ -677,6 +796,30 @@ func file_test_proto_init() {
 				return nil
 			}
 		}
+		file_test_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UploadFileRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_test_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UploadFileResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -684,7 +827,7 @@ func file_test_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_test_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
