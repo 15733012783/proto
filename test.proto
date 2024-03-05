@@ -10,6 +10,16 @@ service Goods {
   rpc DeleteGoods(DeleteGoodsRequest) returns (DeleteGoodsResponse);
   rpc WhereGoods(WhereGoodsRequest)   returns (WhereGoodsResponse);
   rpc UploadFile(UploadFileRequest)   returns (UploadFileResponse);
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+// 定义请求的message
+message HelloRequest {
+  string name = 1;
+}
+// 定义响应的message
+message HelloReply {
+  string message = 1;
 }
 
 message GoodsInfo {

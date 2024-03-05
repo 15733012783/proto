@@ -24,6 +24,7 @@ const (
 	Goods_DeleteGoods_FullMethodName = "/stream.Goods/DeleteGoods"
 	Goods_WhereGoods_FullMethodName  = "/stream.Goods/WhereGoods"
 	Goods_UploadFile_FullMethodName  = "/stream.Goods/UploadFile"
+	Goods_SayHello_FullMethodName    = "/stream.Goods/SayHello"
 )
 
 // GoodsClient is the client API for Goods service.
@@ -35,6 +36,7 @@ type GoodsClient interface {
 	DeleteGoods(ctx context.Context, in *DeleteGoodsRequest, opts ...grpc.CallOption) (*DeleteGoodsResponse, error)
 	WhereGoods(ctx context.Context, in *WhereGoodsRequest, opts ...grpc.CallOption) (*WhereGoodsResponse, error)
 	UploadFile(ctx context.Context, in *UploadFileRequest, opts ...grpc.CallOption) (*UploadFileResponse, error)
+	SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error)
 }
 
 type goodsClient struct {
@@ -90,6 +92,15 @@ func (c *goodsClient) UploadFile(ctx context.Context, in *UploadFileRequest, opt
 	return out, nil
 }
 
+func (c *goodsClient) SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error) {
+	out := new(HelloReply)
+	err := c.cc.Invoke(ctx, Goods_SayHello_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // GoodsServer is the server API for Goods service.
 // All implementations must embed UnimplementedGoodsServer
 // for forward compatibility
@@ -99,6 +110,7 @@ type GoodsServer interface {
 	DeleteGoods(context.Context, *DeleteGoodsRequest) (*DeleteGoodsResponse, error)
 	WhereGoods(context.Context, *WhereGoodsRequest) (*WhereGoodsResponse, error)
 	UploadFile(context.Context, *UploadFileRequest) (*UploadFileResponse, error)
+	SayHello(context.Context, *HelloRequest) (*HelloReply, error)
 	mustEmbedUnimplementedGoodsServer()
 }
 
@@ -120,6 +132,9 @@ func (UnimplementedGoodsServer) WhereGoods(context.Context, *WhereGoodsRequest) 
 }
 func (UnimplementedGoodsServer) UploadFile(context.Context, *UploadFileRequest) (*UploadFileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UploadFile not implemented")
+}
+func (UnimplementedGoodsServer) SayHello(context.Context, *HelloRequest) (*HelloReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SayHello not implemented")
 }
 func (UnimplementedGoodsServer) mustEmbedUnimplementedGoodsServer() {}
 
@@ -224,6 +239,24 @@ func _Goods_UploadFile_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Goods_SayHello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HelloRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GoodsServer).SayHello(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Goods_SayHello_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GoodsServer).SayHello(ctx, req.(*HelloRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Goods_ServiceDesc is the grpc.ServiceDesc for Goods service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -250,6 +283,10 @@ var Goods_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UploadFile",
 			Handler:    _Goods_UploadFile_Handler,
+		},
+		{
+			MethodName: "SayHello",
+			Handler:    _Goods_SayHello_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
